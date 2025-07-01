@@ -1,5 +1,5 @@
 # Funko Shop - Aplicación Web
-## Este proyecto fue desarrollado con el objetivo de aprender y reforzar conocimientos en áreas como patrones de diseño, arquitecturas de software y buenas prácticas de desarrollo, aplicándolos en el proyecto según las tecnologías utilizadas.
+Este proyecto fue desarrollado con el objetivo de aprender y reforzar conocimientos en áreas como patrones de diseño, arquitecturas de software y buenas prácticas de desarrollo, aplicándolos en el proyecto según las tecnologías utilizadas.
 
 Funko Shop es una aplicación web que permite a los usuarios explorar un catálogo de productos, buscar artículos por nombre o categoría, y ordenarlos por precio. La plataforma incluye un carrito de compras donde se pueden agregar, modificar o eliminar productos, ajustando la lista según la cantidad, las preferencias del usuario y el costo final. Además, los usuarios pueden iniciar sesión para acceder a su cuenta, revisar su información personal y consultar su historial de compras.
 ## Tabla de contenido
