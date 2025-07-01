@@ -1,5 +1,7 @@
-# Funko Shop aplicacion web
-Esta aplicacion permite ver el catalogo de preductos, poder buscar por nombre o categoria, y ordenar por precio. Cuenta con un carrito de compras para poder almacenar los articulos, modificando la lista, acorde a la cantidad de articulos, gustos y costos finales. El usuario podra acceder a su cuenta para poder revisar su informacion como historial de compra, etc.
+# Funko Shop - Aplicación Web
+## Este proyecto fue desarrollado con el objetivo de aprender y reforzar conocimientos en áreas como patrones de diseño, arquitecturas de software y buenas prácticas de desarrollo, aplicándolos en el proyecto según las tecnologías utilizadas.
+
+Funko Shop es una aplicación web que permite a los usuarios explorar un catálogo de productos, buscar artículos por nombre o categoría, y ordenarlos por precio. La plataforma incluye un carrito de compras donde se pueden agregar, modificar o eliminar productos, ajustando la lista según la cantidad, las preferencias del usuario y el costo final. Además, los usuarios pueden iniciar sesión para acceder a su cuenta, revisar su información personal y consultar su historial de compras.
 ## Tabla de contenido
 1. [Características](#características)
 3. [BackEnd](#backEnd)
@@ -9,32 +11,31 @@ Esta aplicacion permite ver el catalogo de preductos, poder buscar por nombre o 
 7. [Monitoreo de rutas](#monitoreo-de-rutas) -->
 2. [FrontEnd](#frontend)
 ## Características
-- Gestión de usuarios implementacion de tokens de autorizacion y autenticacion
+- Gestión de usuarios implementación de tokens de y autenticación mediante cookies
 <!-- - Integración con API de terceros, utiliza los servicios de stripe para realizar pagos online -->
-- Implementacion de varibles de entorno para el acceso a diferentes servicios y otros usos especificos
-- Optimizacion de APIs mediante utlizacion de cache y limitando la cantidad de peticiones
+- Implementación de variables de entorno para el acceso a diferentes servicios y otros usos específicos
+- Optimización de APIs mediante utilización de cache y limitando la cantidad de peticiones
 ## BackEnd
-- Tecnologias utilizadas: C# .NET Core ASP.NET dotnet 
+- Tecnologías utilizadas: C# .NET Core ASP.NET dotnet 
 ```
 App/
 │
-├── Controllers/   # Procesan las peticiones y logica de las respuestas
-├── Data/          # Configuracion del constructor de AppDbContext y entidades
-├── DTOs/          # Definicion de las clases de modelos de datos para transacciones
-├── Logs/          # Configuracion de logs y monitoreo de la aplicacion
-├── Models/        # Definicion de clases que representan las entidades de la base de datos
-├── Repository/    # Archivos que contienen las clases que interactuan con la base de datos
-└── Program/       # punto de entrada de la aplicacion (configuracion del servidor)
+├── Controllers/   # Procesan las peticiones y contienen la lógica de las respuestas
+├── Data/          # Configuración del constructor de AppDbContext y definición de entidades
+├── DTOs/          # Clases que representan modelos de datos utilizados en transacciones
+├── Logs/          # Configuración de logs y monitoreo de la aplicación
+├── Models/        # Clases que representan las entidades de la base de datos
+├── Repository/    # Clases que interactúan con la base de datos mediante Entity Framework
+└── Program/       # Punto de entrada de la aplicación (configuración del servidor)
 ```
 ## Base de datos
-La informacion esta almacenada en una base de datos relacional, utiliza la libreria de sequelize para definir los medelos, conexion e interaccion con la base de datos a travez de un ORM, esta diseñada y graficada con la herramienta [dbdiagram.io](https://dbdiagram.io/)
+La percistencia de informacion se realiza a traves de una base de datos relacional, la misma esta diseñada y graficada con la herramienta [dbdiagram.io](https://dbdiagram.io/), el BackEnd utiliza Entity Framework para la interacción con la base de datos, a través de un ORM
 - Base de datos relacional
-- Modelos y consultas utilizando ORM Entity framework
+- Modelos y consultas utilizando un ORM de Entity Framework, implementa paginación y DTOs para optimizar las consultas y no exponer las entidades
 - Gestor de base de datos: MySql
 ## Documentacion
-- Documentacion de APIs: la documentacion de los endpoint y APIs fue creada con Swagger Open.io
-- Documentacion del codigo fuente: la documentacion del codigo fuente fue creada con JSDoc
-- Enlace: documentacion disponible en [docs](http://localhost:3001/cinemark/documentation)
+- Documentación de APIs: la documentación de los endpoint y APIs esta creada con Swagger Open.io
+- Enlace: documentación disponible en [docs](http://localhost:3001/documentation)
 <!-- ## Pruebas unitarias
 - Librerias: las pruebas unitarias estan creadas con la libreria de Jest y Mock
 - Iniciar test: con el siguiente comando ejecuta las pruebas unitarias
@@ -48,19 +49,19 @@ npm test
 npm test
 ``` -->
 ## Monitoreo de rutas
-- Monitoreo: se realiza mediante un middleware y la definnicion de la clase que contiene la logica para crear los logs personalizados
+- Monitoreo: se realiza mediante un middleware y la implementacion de la clase que contiene la lógica para crear los logs personalizados
 ## FrontEnd
-- Tecnologias utilizadas: Razor CSS3 JavaScript
+- Tecnologías utilizadas: Razor CSS3 JavaScript
 ```
 App/
-|──Views/
-|   └── views/ # archivos de vistas
-|──wwwroot/
+|── Views/
+|   └── views/ # archivos de vistas Razor
+|── wwwroot/
 |   ├── css/   # archivos de estilos
 |   └── js/    # archivos javascripts
 ```
 ## Inicio
-- Inicio de la aplicacion: una vez clonado el repositorio se debe escribir el siguiente comando en la terminal
+- Inicio de la aplicación: una vez clonado el repositorio se debe escribir el siguiente comando en la terminal
 ```bash
 dotnet run
 ```
