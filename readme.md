@@ -14,7 +14,7 @@ Funko Shop es una aplicación web que permite a los usuarios explorar un catálo
 - Gestión de usuarios implementación de tokens de y autenticación mediante cookies
 <!-- - Integración con API de terceros, utiliza los servicios de stripe para realizar pagos online -->
 - Implementación de variables de entorno para el acceso a diferentes servicios y otros usos específicos
-- Optimización de APIs mediante implementacion de cache, optmizacion de consultas mediante indices y la limitacion del numero de peticiones
+- Optimización de APIs mediante la implementacion de cache, optimizacion de las consultas mediante indices, y la limitacion del numero de peticiones
 ## BackEnd
 - Tecnologías utilizadas: C# .NET Core ASP.NET dotnet 
 ```
