@@ -1,7 +1,7 @@
 # Funko Shop - Aplicación Web
 Este proyecto fue desarrollado con el objetivo de aprender y reforzar conocimientos en áreas como patrones de diseño, arquitecturas de software y buenas prácticas de desarrollo, aplicándolos en el proyecto según las tecnologías utilizadas.
 
-Funko Shop es una aplicación web que permite a los usuarios explorar un catálogo de productos, buscar artículos por nombre o categoría, y ordenarlos por precio. La plataforma incluye un carrito de compras donde se pueden agregar, modificar o eliminar productos, ajustando la lista según la cantidad, las preferencias del usuario y el costo final. Además, los usuarios pueden iniciar sesión para acceder a su cuenta, revisar su información personal y consultar su historial de compras.
+Funko Shop es una aplicación web que permite a los usuarios explorar un catálogo de productos, buscar artículos por nombre o categoría, y ordenarlos por precio. La plataforma incluye un carrito de compras donde se pueden agregar, modificar o eliminar productos, ajustando la lista según la cantidad, las preferencias del usuario y el costo final. Además, los usuarios pueden iniciar sesión para realizar compras, agregar articulos a su carrito, acceder a su cuenta, revisar su información personal y consultar su historial de compras.
 ## Tabla de contenido
 1. [Características](#características)
 3. [BackEnd](#backEnd)
@@ -14,7 +14,7 @@ Funko Shop es una aplicación web que permite a los usuarios explorar un catálo
 - Gestión de usuarios implementación de tokens de y autenticación mediante cookies
 <!-- - Integración con API de terceros, utiliza los servicios de stripe para realizar pagos online -->
 - Implementación de variables de entorno para el acceso a diferentes servicios y otros usos específicos
-- Optimización de APIs mediante utilización de cache y limitando la cantidad de peticiones
+- Optimización de APIs mediante implementacion de cache, optmizacion de consultas mediante indices y la limitacion del numero de peticiones
 ## BackEnd
 - Tecnologías utilizadas: C# .NET Core ASP.NET dotnet 
 ```
