@@ -1,5 +1,4 @@
 using System.Security.Claims;
-using Funko_shop.DTOs;
 using Funko_shop.Models;
 using Funko_shop.Repository;
 using Microsoft.AspNetCore.Authorization;

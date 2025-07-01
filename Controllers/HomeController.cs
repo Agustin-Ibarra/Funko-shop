@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Funko_shop.Repository;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Funko_shop.Controllers;
 
