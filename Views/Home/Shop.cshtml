@@ -1,0 +1,56 @@
+@{
+  ViewData["Title"] = "FunkoShop | Shop";
+  ViewData["path1"] = "/";
+  ViewData["link1"] = "HOME";
+  ViewData["path2"] = "/cart";
+  ViewData["link2"] = "CARRITO";
+  ViewData["path3"] = "/account";
+  ViewData["link3"] = "MI CUENTA";
+}
+
+<section class="shop">
+  <section class="options">
+    <div>
+      <p class="option-title">Buscar</p>
+      <input type="text" placeholder="Nombre del articulo o categoria">
+    </div>
+    <div>
+      <button class="select">
+        Ordenar por
+        <span class="material-symbols-outlined">
+          arrow_drop_down
+        </span>  
+      </button>
+      <ul class="list-options hidden">
+        <li class="order-item" id="desc">Menor a mayor</li>
+        <li class="order-item" id="asc">Mayor a menor</li>
+      </ul>
+      <p class="text-option hidden"></p>
+    </div>
+    <button class="search">
+      Buscar
+      <span class="material-symbols-outlined">
+        search
+      </span>
+      </button>
+    <button class="clean">
+      Limpiar filtros
+      <span class="material-symbols-outlined">
+        clear_all
+      </span>
+    </button>
+    <p class="search-text hidden"></p>
+  </section>
+  <section class="items">
+    <article class="items-article">
+      <div class="spinner-container">
+          <div class="big-spinner"></div>
+          <p class="not-found"></p>
+      </div>
+      <ul class="items-list">
+      </ul>
+      <button class="load-more">Cargar mas articulos<div class="spinner load-more-spinner hidden"></div></button>
+    </article>
+  </section>
+</section>
+<script src="~/js/shop.js" asp-append-version="true"></script>

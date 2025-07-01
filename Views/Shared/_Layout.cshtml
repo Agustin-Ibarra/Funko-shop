@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"]</title>
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/Funko_shop.styles.css" asp-append-version="true" />
+  <link rel="shortcut icon" href="/images/isotype.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&" />
+</head>
+
+<body>
+  <header>
+    <div>
+      <div class="logo-div">
+        <img src="/images/logo_light_horizontal.svg" alt="funkoshop logo">
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="@ViewData["path1"]" class="nav-link">@ViewData["link1"]</a>
+          </li>
+          <li>
+           <a href="@ViewData["path2"]" class="nav-link">@ViewData["link2"]</a>
+          </li>
+          <li>
+            <a href="@ViewData["path3"]" class="nav-link" id="@ViewData["id-link"]">@ViewData["link3"]</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="container">
+    <main role="main" class="pb-3">
+      @RenderBody()
+    </main>
+  </div>
+
+  <footer>
+    <div>
+      <ul class="footer-list-link">
+        <li>
+          <a href="@ViewData["path1"]" class="nav-link">@ViewData["link1"]</a>
+        </li>
+        <li>
+          <a href="@ViewData["path2"]" class="nav-link">@ViewData["link2"]</a>
+        </li>
+        <li>
+          <a href="@ViewData["path3"]" class="nav-link" id="@ViewData["id-link"]">@ViewData["link3"]</a>
+        </li>
+      </ul>
+      <div>
+        <img src="/images/isotype.svg" alt="funkoshop logo">
+      </div>
+    </div>
+      <p>Todos los derechos reservados 2025 - Funkoshop & copy"</p>
+  </footer>
+  <script src="~/js/site.js" asp-append-version="true"></script>
+  @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

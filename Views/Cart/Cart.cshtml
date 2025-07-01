@@ -1,0 +1,53 @@
+@{
+  ViewData["Title"] = "FunkoShop | Cart";
+  ViewData["path1"] = "/shop";
+  ViewData["link1"] = "SHOP";
+  ViewData["path2"] = "/cart";
+  ViewData["link2"] = "CARRITO";
+  ViewData["path3"] = "/account";
+  ViewData["link3"] = "MI CUENTA";
+}
+<section class="cart-section">
+  <p class="cart-title">CARRITO DE COMPRAS</p>
+  <ul class="cart-list">
+    <li class="cart-item-title cart-item">
+      <p>DETALLE DEL PRODUCTO</p>
+      <p>CANTIDAD</p>
+      <p>TOTAL</p>
+    </li>
+    <li class="cart-item-loader">
+      <div class="big-spinner"></div>
+    </li>
+    <li class="cart-item-empty hidden">
+      <p>Todavia no agregaste un articulo a tu carrito</p>
+    </li>
+  </ul>
+  <article class="resumen-article">
+    <article class="resumen">
+      <p class="cart-title">RESUMEN</p>
+      <div class="resumen-data-div">
+        <div class="resumen-amount-div resumen-text-div">
+          <p class="resumen-data-title">CANTIDAD DE ARTICULOS</p>
+          <p class="resumen-data amount" id="qunatity">0</p>
+        </div>
+        <div class="resumen-subtotal-div resumen-text-div">
+          <P class="resumen-data-title">SUBTOTAL</P>
+          <P class="resumen-data subtotal" id="subtotal">$0.00</P>
+        </div>
+        <div class="resumen-total-div resumen-text-div">
+          <P class="resumen-data-title">TOTAL</P>
+          <P class="resumen-data total" id="total">$0.00</P>
+        </div>
+      </div>
+      <button class="pay hidden">
+        IR A PAGAR
+        <span class="material-symbols-outlined pay-icon">
+          payments
+        </span>  
+        <div class="spinner pay-spinner hidden"></div>
+      </button>
+
+    </article>
+  </article>
+</section>
+<script src="~/js/cart.js" asp-append-version="true"></script>

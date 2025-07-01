@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "FunkoShop | Sign in";
+    ViewData["path1"] = "/";
+    ViewData["link1"] = "HOME";
+    ViewData["path2"] = "/shop";
+    ViewData["link2"] = "SHOP";
+    ViewData["path3"] = "/register";
+    ViewData["link3"] = "REGISTRARME";
+}
+
+<form action="">
+  <h3>INGRESAR A MI CUENTA</h3>
+  <div class="input-div login">
+    <p>Email:</p>
+    <input type="text" placeholder="ejemplo@gmail.com" id="email">
+  </div>
+  <div class="input-div login">
+    <p>Contraseña:</p>
+    <input type="password" placeholder="contraseña" id="password">
+  </div>
+  <button class="send-form">Ingresar <div class="spinner hidden"></div></button>
+  <p class="sold-out hidden error"></p>
+  <p class="redirect-form">
+    Si no estas registrado, haz click 
+    <a href="/register">aqui</a>
+  </p>
+</form>
+<script src="~/js/login.js" asp-append-version="true"></script>

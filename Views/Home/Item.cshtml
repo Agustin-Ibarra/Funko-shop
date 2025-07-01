@@ -1,0 +1,36 @@
+@{
+  ViewData["Title"] = "FunkoShop | Item";
+  ViewData["path1"] = "/shop";
+  ViewData["link1"] = "SHOP";
+  ViewData["path2"] = "/cart";
+  ViewData["link2"] = "CARRITO";
+  ViewData["path3"] = "/account";
+  ViewData["link3"] = "MI CUENTA";
+}
+
+<section class="item-choice">
+  <div class="item-choice-div">
+    <div class="big-spinner"></div>
+    <img src="" alt="item image" class="item-choice-img">
+  </div>
+  <div class="item-choice-data">
+    <p class="item-choice-category"></p>
+    <p class="item-choice-name"></p>
+    <p class="item-choice-description"></p>
+    <p class="item-choice-price"></p>
+    <div class="quantity-div">
+      <button class="quantity add">+</button>
+      <p class="quantity-text">1</p>
+      <button class="quantity less">-</button>
+    </div>
+    <button class="add-cart">
+      Agregar al carrito <div class="spinner hidden"></div>
+      <span class="material-symbols-outlined">
+        shopping_cart_checkout
+      </span>
+    </button>
+    <p class="sold-out hidden">Articulo agotado</p>
+    <p class="cart-add-text hidden">Articulo agregado al carrito <a href="/cart">ver</a></p>
+  </div>
+</section>
+<script src="~/js/item.js" asp-append-version="true"></script>

@@ -1,0 +1,38 @@
+@{
+  ViewData["Title"] = "FunkoShop | Account";
+  ViewData["path1"] = "/";
+  ViewData["link1"] = "HOME";
+  ViewData["path2"] = "/shop";
+  ViewData["link2"] = "SHOP";
+  ViewData["path3"] = "/login";
+  ViewData["link3"] = "CERRAR SESION";
+  ViewData["id-link"] = "close-session";
+}
+<section class="profile">
+  <section class="profile-section">
+    <h4 class="cart-title">Informacion de la cuenta</h4>
+    <div class="profile-data">
+      <div class="profile-data-div">
+        <p class="profile-data-title">Nombre Completo:</p>
+        <p class="profile-data-text" id="fullname"></p>
+      </div>
+      <div class="profile-data-div">
+        <p class="profile-data-title">Email:</p>
+        <p class="profile-data-text" id="email"></p>
+      </div>
+      <div class="inputs-profile-div">
+        <p class="danger">Atencion! si decides eliminar tu cuenta, toda tu informacion personal sera eliminada de
+          forma permanente de la base de datos.</p>
+        <button class="delete-profile">Eliminar mi cuenta</button>
+      </div>
+    </div>
+  </section>
+  <section class="purchase-section">
+    <h4 class="cart-title">Ordenes de compra</h4>
+    <p class="danger pre-data">Aqui se mostraran tus ordenes de compras realizadas.</p>
+    <ul class="purchase-list">
+      <div class="big-spinner"></div>
+    </ul>
+  </section>
+</section>
+<script src="~/js/account.js" asp-append-version="true"></script>
