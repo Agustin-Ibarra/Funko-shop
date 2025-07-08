@@ -5,7 +5,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Funko_shop.Repository;
 
-public class ItemRepository
+public interface IItemRepository
+{
+  Task<List<ItemDto>> GetItems(int offset);
+  Task<List<ItemDto>> GetItemsByPriceOrderAsc(int offset);
+  Task<List<ItemDto>> GetItemsByPriceOrderDesc(int offset);
+  Task<List<ItemDto>> GetItemsByFilter(string filter, int offset);
+  Task<List<ItemDto>> GetItemsByFilterOrderAsc(string filter, int offset);
+  Task<List<ItemDto>> GetItemsByFilterOrderDesc(string filter, int offset);
+  Task<ItemDetailDto> GetItemDetail(int id);
+  Task<Item> GetItemModel(int id);
+  Task<ItemIdDto> GetItemId(int id);
+}
+public class ItemRepository : IItemRepository
 {
   private readonly AppDbContext _context;
   public ItemRepository(AppDbContext context)

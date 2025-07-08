@@ -43,7 +43,7 @@ if (connection != null)
 {
   builder.Services.AddDbContext<AppDbContext>(options => options.UseMySQL(connection));
   builder.Services.AddScoped<UserRepository>();
-  builder.Services.AddScoped<ItemRepository>();
+  builder.Services.AddScoped<IItemRepository,ItemRepository>();
   builder.Services.AddScoped<CartRepository>();
   builder.Services.AddScoped<PurchaseRepository>();
 }
