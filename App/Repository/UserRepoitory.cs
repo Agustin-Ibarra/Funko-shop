@@ -5,16 +5,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Funko_shop.Repository;
 
-public class UserRepository
+public interface IUserRepository
+{
+  Task<UserCredentialsDto?> GetUser(string email);
+  Task CreateUser(User user);
+  Task<Role> GetRole();
+  Task<ProfileDto> GetProfile(int id);
+
+  Task<User> GetUserModel(int id);
+}
+public class UserRepository : IUserRepository
 {
   private readonly AppDbContext _context;
-  // es una referencia al contexto de base de datos (AppDbContext) que definiste heredando de DbContext.
-  // Se usa dentro del repositorio para acceder a las tablas (DbSets) y hacer consultas o cambios en la base de datos. Además,
-  // al ser readonly se asegura que solo se asigne en el constructor y no cambie después.
-
   public UserRepository(AppDbContext context)
   {
-    // Constructor parametro del tipo de dato AppDbContext
     _context = context;
   }
 

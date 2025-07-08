@@ -42,9 +42,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 if (connection != null)
 {
   builder.Services.AddDbContext<AppDbContext>(options => options.UseMySQL(connection));
-  builder.Services.AddScoped<UserRepository>();
-  builder.Services.AddScoped<IItemRepository,ItemRepository>();
-  builder.Services.AddScoped<CartRepository>();
+  builder.Services.AddScoped<IUserRepository, UserRepository>();
+  builder.Services.AddScoped<IItemRepository, ItemRepository>();
+  builder.Services.AddScoped<ICartRepository, CartRepository>();
   builder.Services.AddScoped<PurchaseRepository>();
 }
 else

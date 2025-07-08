@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
 
-namespace tests;
+namespace Tests;
 
 public class ShopControllerTast
 {
@@ -17,9 +17,7 @@ public class ShopControllerTast
     {
       IdItem = 1,
       Name = "Item test",
-      Image = "image.jpg",
       Price = 10.00,
-      Category = "category"
     };
     var itemRepositoryMock = new Mock<IItemRepository>();
     itemRepositoryMock
@@ -41,11 +39,7 @@ public class ShopControllerTast
     {
       IdItem = 1,
       ItemName = "Item test",
-      Image = "image.jpg",
       Price = 10.00,
-      Category = "Item category",
-      Description = "Item descirption",
-      Stock = 1
     };
     var itemRepositoryMock = new Mock<IItemRepository>();
     itemRepositoryMock

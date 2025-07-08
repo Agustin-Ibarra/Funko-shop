@@ -5,7 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Funko_shop.Repository;
 
-public class CartRepository
+public interface ICartRepository
+{
+  Task<List<CartItemDto>> GetItemsToCart(int idUser);
+  Task CreateItemCart(Cart cart);
+  Task DeleteItem(int idCart);
+  Task ClearCart(int idUser);
+}
+public class CartRepository : ICartRepository
 {
   private readonly AppDbContext _context;
   public CartRepository(AppDbContext context)
@@ -54,7 +61,7 @@ public class CartRepository
 
   public async Task ClearCart(int idUser)
   {
-    await _context.Database.ExecuteSqlRawAsync("DELETE FROM carts WHERE customer = {0}",idUser);
+    await _context.Database.ExecuteSqlRawAsync("DELETE FROM carts WHERE customer = {0}", idUser);
   }
-  
+
 }
