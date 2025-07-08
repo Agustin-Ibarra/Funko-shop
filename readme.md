@@ -27,7 +27,7 @@ App/
 ├── Models/        # Clases que representan las entidades de la base de datos
 ├── Properties     # Archivo launch json
 ├── Repository/    # Clases que interactúan con la base de datos mediante Entity Framework
-├── Views/         # Archivos Razor pages
+├── Views/         # Archivos de vistas
 ├── wwwroot/       # Archivos estaticos
 └── Program.cs     # Punto de entrada de la aplicación (configuración del servidor)
 ```
@@ -41,11 +41,12 @@ La percistencia de informacion se realiza a traves de una base de datos relacion
 - Enlace: documentación disponible en [docs](http://localhost:3001/documentation)
 ## Pruebas unitarias
 - Librerias: las pruebas unitarias estan creadas con la libreria de Xunit y Mock
+```
 Tests/
 │
 ├── CartControllerTests.cs   # test del controlador que de procesa las peticiones del carrito de compras
 ├── ShopControllerTasts.cs   # test del controlador que porecesa las solicitudes de la seccion shop
-
+```
 - Iniciar test: con el siguiente comando ejecuta las pruebas unitarias
 ```bash
 dotnet test
