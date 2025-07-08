@@ -6,15 +6,15 @@ namespace Funko_shop.Controllers;
 
 public class ShopController : Controller
 {
-  private readonly ItemRepository _itemRepository;
-  public ShopController(ItemRepository repository)
+  private readonly IItemRepository _itemRepository;
+  public ShopController(IItemRepository repository)
   {
     _itemRepository = repository;
   }
 
   [HttpGet]
   [Route("/items/{offset}")]
-  [OutputCache(Duration = 300, VaryByRouteValueNames = new [] {"offset"})]
+  [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "offset" })]
   public async Task<IActionResult> ApiItems(int offset)
   {
     var items = await _itemRepository.GetItems(offset);
@@ -23,7 +23,7 @@ public class ShopController : Controller
 
   [HttpGet]
   [Route("/items/{order}/{offset}")]
-  [OutputCache(Duration = 300, VaryByRouteValueNames = new [] {"order","offset"})]
+  [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "order", "offset" })]
   public async Task<IActionResult> ApiItemsOrderByprice(string order, int offset)
   {
     if (order == "asc")
@@ -40,7 +40,7 @@ public class ShopController : Controller
 
   [HttpGet]
   [Route("/items/filter/{filter}/{offset}")]
-  [OutputCache(Duration = 300, VaryByRouteValueNames = new [] {"filter","offset"})]
+  [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "filter", "offset" })]
   public async Task<IActionResult> ApiItemsByFilter(string filter, int offset)
   {
     var items = await _itemRepository.GetItemsByFilter(filter, offset);
@@ -56,7 +56,7 @@ public class ShopController : Controller
 
   [HttpGet]
   [Route("/items/filter/{filter}/{order}/{offset}")]
-  [OutputCache(Duration = 300, VaryByRouteValueNames = new [] {"filter","order","offset"})]
+  [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "filter", "order", "offset" })]
   public async Task<IActionResult> ApiItemsByFilterAndOrder(string filter, string order, int offset)
   {
     if (order == "asc")
@@ -87,7 +87,7 @@ public class ShopController : Controller
 
   [HttpGet]
   [Route("/items/details/{id}")]
-  [OutputCache(Duration = 600, VaryByRouteValueNames = new [] {"id"})]
+  [OutputCache(Duration = 600, VaryByRouteValueNames = new[] { "id" })]
   public async Task<IActionResult> GetItemDetail(int id)
   {
     var item = await _itemRepository.GetItemDetail(id);
