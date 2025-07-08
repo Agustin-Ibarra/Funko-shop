@@ -7,8 +7,8 @@ Funko Shop es una aplicación web que permite a los usuarios explorar un catálo
 3. [BackEnd](#backEnd)
 4. [Base de datos](#base-de-datos)
 5. [Documentacion](#documentacion)
-<!-- 6. [Pruebas unitarias](#pruebas-unitarias)
-7. [Monitoreo de rutas](#monitoreo-de-rutas) -->
+6. [Pruebas unitarias](#pruebas-unitarias)
+7. [Monitoreo de rutas](#monitoreo-de-rutas)
 2. [FrontEnd](#frontend)
 ## Características
 - Gestión de usuarios implementación de tokens de y autenticación mediante cookies
@@ -25,8 +25,11 @@ App/
 ├── DTOs/          # Clases que representan modelos de datos utilizados en transacciones
 ├── Logs/          # Configuración de logs y monitoreo de la aplicación
 ├── Models/        # Clases que representan las entidades de la base de datos
+├── Properties     # Archivo launch json
 ├── Repository/    # Clases que interactúan con la base de datos mediante Entity Framework
-└── Program/       # Punto de entrada de la aplicación (configuración del servidor)
+├── Views/         # Archivos Razor pages
+├── wwwroot/       # Archivos estaticos
+└── Program.cs     # Punto de entrada de la aplicación (configuración del servidor)
 ```
 ## Base de datos
 La percistencia de informacion se realiza a traves de una base de datos relacional, la misma esta diseñada y graficada con la herramienta [dbdiagram.io](https://dbdiagram.io/), el BackEnd utiliza Entity Framework para la interacción con la base de datos, a través de un ORM
@@ -36,26 +39,25 @@ La percistencia de informacion se realiza a traves de una base de datos relacion
 ## Documentacion
 - Documentación de APIs: la documentación de los endpoint y APIs esta creada con Swagger Open.io
 - Enlace: documentación disponible en [docs](http://localhost:3001/documentation)
-<!-- ## Pruebas unitarias
-- Librerias: las pruebas unitarias estan creadas con la libreria de Jest y Mock
+## Pruebas unitarias
+- Librerias: las pruebas unitarias estan creadas con la libreria de Xunit y Mock
+Tests/
+│
+├── CartControllerTests.cs   # test del controlador que de procesa las peticiones del carrito de compras
+├── ShopControllerTasts.cs   # test del controlador que porecesa las solicitudes de la seccion shop
+
 - Iniciar test: con el siguiente comando ejecuta las pruebas unitarias
 ```bash
-npm test
+dotnet test
 ```
-## Pruebas de integracion
-- Librerias: las pruebas de integracion estan creadas con las librerias de Jest y supertest
-- Iniciar test: con el siguiente comando ejecuta las pruebas unitarias
-```bash
-npm test
-``` -->
 ## Monitoreo de rutas
-- Monitoreo: se realiza mediante un middleware y la implementacion de la clase que contiene la lógica para crear los logs personalizados
+- Monitoreo: se realiza mediante un middleware y la implementacion de la clase que contiene la lógica para crear logs personalizados
 ## FrontEnd
-- Tecnologías utilizadas: Razor CSS3 JavaScript
+- Tecnologías utilizadas: Razor Pages CSS3 JavaScript
 ```
 App/
 |── Views/
-|   └── views/ # archivos de vistas Razor
+|   └── views/ # archivos de vistas Razor Pages
 |── wwwroot/
 |   ├── css/   # archivos de estilos
 |   └── js/    # archivos javascripts
@@ -65,8 +67,3 @@ App/
 ```bash
 dotnet run
 ```
-<!-- ## Instalacion
-- Dependencias: para instalar las dependencias necesarias para el correcto funcionamineto de la applicacion, ejecuta el siguiente comando en la terminal
-```bash
-npm install
-``` -->
