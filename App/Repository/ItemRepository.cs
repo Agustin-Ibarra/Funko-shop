@@ -15,7 +15,6 @@ public interface IItemRepository
   Task<List<ItemDto>> GetItemsByFilterOrderDesc(string filter, int offset);
   Task<ItemDetailDto> GetItemDetail(int id);
   Task<Item> GetItemModel(int id);
-  Task<ItemIdDto> GetItemId(int id);
 }
 public class ItemRepository : IItemRepository
 {
@@ -163,18 +162,6 @@ public class ItemRepository : IItemRepository
   {
     var item = await _context.Items
     .Where(item => item.id_item == id)
-    .FirstOrDefaultAsync() ?? throw new Exception($"No existe articulo con el id: {id}");
-    return item;
-  }
-
-  public async Task<ItemIdDto> GetItemId(int id)
-  {
-    var item = await _context.Items
-    .Where(item => item.id_item == id)
-    .Select(item => new ItemIdDto
-    {
-      IdItem = item.id_item
-    })
     .FirstOrDefaultAsync() ?? throw new Exception($"No existe articulo con el id: {id}");
     return item;
   }

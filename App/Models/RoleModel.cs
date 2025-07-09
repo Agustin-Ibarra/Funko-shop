@@ -8,5 +8,5 @@ public class Role
   public int id_role { get; set; }
   public required string role { get; set; }
   public int level_access { get; set; }
-  public required ICollection<User> UserReference { get; set; }
+  public ICollection<User>? UserReference { get; set; }
 }

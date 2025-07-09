@@ -30,7 +30,7 @@ public class CartController : Controller
   [Authorize]
   [HttpGet]
   [Route("/cart/items")]
-  public async Task<IActionResult> GetItemCartItems()
+  public async Task<IActionResult> GetCartItems()
   {
     int idUser = Convert.ToInt16(User.FindFirstValue(ClaimTypes.NameIdentifier));
     double total = 0.0;
@@ -59,10 +59,8 @@ public class CartController : Controller
     cartItem.customer = Convert.ToInt16(User.FindFirstValue(ClaimTypes.NameIdentifier));
     var itemModel = await _itemRepository.GetItemModel(cartItem.item);
     var userModel = await _userRepository.GetUserModel(cartItem.customer);
-    var itemId = await _itemRepository.GetItemId(cartItem.item);
     cartItem.ItemFk = itemModel;
     cartItem.CustomerFk = userModel;
-    cartItem.item = itemId.IdItem;
     await _cartRepository.CreateItemCart(cartItem);
     return Created("/cart/items",new {message = "Articulo agregado al carrito"});
   }
