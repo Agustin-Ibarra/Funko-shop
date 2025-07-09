@@ -23,7 +23,7 @@ public class ShopControllerTast
     itemRepositoryMock
     .Setup(repository => repository.GetItems(1))
     .ReturnsAsync([item]);
-    var controller = new ShopController(itemRepositoryMock.Object);
+    var controller = new ItemController(itemRepositoryMock.Object);
     // Act
     var request = await controller.ApiItems(1);
     // Assert
@@ -45,7 +45,7 @@ public class ShopControllerTast
     itemRepositoryMock
     .Setup(repository => repository.GetItemDetail(1))
     .ReturnsAsync(itemDetail);
-    var controller = new ShopController(itemRepositoryMock.Object);
+    var controller = new ItemController(itemRepositoryMock.Object);
     // Act
     var request = await controller.GetItemDetail(1);
     // Assert

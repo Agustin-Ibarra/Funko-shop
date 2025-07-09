@@ -11,18 +11,4 @@ public class HomeController : Controller
     return View();
   }
 
-  [HttpGet]
-  [Route("/shop")]
-  public IActionResult Shop()
-  {
-    return View();
-  }
-
-  [HttpGet]
-  [Route("/item")]
-  public IActionResult Item()
-  {
-    return View();
-  }
-
 }

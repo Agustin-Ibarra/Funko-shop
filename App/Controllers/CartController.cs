@@ -11,9 +11,9 @@ public class CartController : Controller
   private readonly ICartRepository _cartRepository;
   private readonly IItemRepository _itemRepository;
   private readonly IUserRepository _userRepository;
-  public CartController(ICartRepository repository, IItemRepository itemRepository, IUserRepository userRepository)
+  public CartController(ICartRepository cartRepository, IItemRepository itemRepository, IUserRepository userRepository)
   {
-    _cartRepository = repository;
+    _cartRepository = cartRepository;
     _itemRepository = itemRepository;
     _userRepository = userRepository;
   }

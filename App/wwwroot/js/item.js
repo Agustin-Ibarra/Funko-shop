@@ -10,7 +10,7 @@ const $cartIcon = document.querySelector(".material-symbols-outlined");
 let quantity = 1;
 let limit = 5;
 
-fetch(`/items/details/${sessionStorage.getItem("id")}`)
+fetch(`/item/details/${sessionStorage.getItem("id")}`)
 .then(async(response)=>{
   const item = await response.json();
   const $img = document.querySelector(".item-choice-img");

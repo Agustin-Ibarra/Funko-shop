@@ -7,13 +7,20 @@ namespace Funko_shop.Controllers;
 public class ShopController : Controller
 {
   private readonly IItemRepository _itemRepository;
-  public ShopController(IItemRepository repository)
+  public ShopController(IItemRepository itemRepository)
   {
-    _itemRepository = repository;
+    _itemRepository = itemRepository;
   }
 
   [HttpGet]
-  [Route("/items/{offset}")]
+  [Route("/shop")]
+  public IActionResult Shop()
+  {
+    return View();
+  }
+
+  [HttpGet]
+  [Route("/shop/items/{offset}")]
   [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "offset" })]
   public async Task<IActionResult> ApiItems(int offset)
   {
@@ -22,7 +29,7 @@ public class ShopController : Controller
   }
 
   [HttpGet]
-  [Route("/items/{order}/{offset}")]
+  [Route("/shop/items/{order}/{offset}")]
   [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "order", "offset" })]
   public async Task<IActionResult> ApiItemsOrderByprice(string order, int offset)
   {
@@ -39,7 +46,7 @@ public class ShopController : Controller
   }
 
   [HttpGet]
-  [Route("/items/filter/{filter}/{offset}")]
+  [Route("/shop/items/filter/{filter}/{offset}")]
   [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "filter", "offset" })]
   public async Task<IActionResult> ApiItemsByFilter(string filter, int offset)
   {
@@ -55,7 +62,7 @@ public class ShopController : Controller
   }
 
   [HttpGet]
-  [Route("/items/filter/{filter}/{order}/{offset}")]
+  [Route("/shop/items/filter/{filter}/{order}/{offset}")]
   [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "filter", "order", "offset" })]
   public async Task<IActionResult> ApiItemsByFilterAndOrder(string filter, string order, int offset)
   {
@@ -84,21 +91,4 @@ public class ShopController : Controller
       }
     }
   }
-
-  [HttpGet]
-  [Route("/items/details/{id}")]
-  [OutputCache(Duration = 600, VaryByRouteValueNames = new[] { "id" })]
-  public async Task<IActionResult> GetItemDetail(int id)
-  {
-    var item = await _itemRepository.GetItemDetail(id);
-    if (item == null)
-    {
-      return StatusCode(404, "No se encontro el articulo");
-    }
-    else
-    {
-      return Ok(item);
-    }
-  }
-
 }
