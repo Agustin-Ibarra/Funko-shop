@@ -14,8 +14,8 @@ namespace Funko_shop.Controllers;
 public class UserController : Controller
 {
 
-  private readonly UserRepository _userRepository;
-  public UserController(UserRepository repository)
+  private readonly IUserRepository _userRepository;
+  public UserController(IUserRepository repository)
   {
     _userRepository = repository;
   }
@@ -114,7 +114,6 @@ public class UserController : Controller
   public async Task<IActionResult> Profile()
   {
     int idUser = Convert.ToInt16(User.FindFirstValue(ClaimTypes.NameIdentifier));
-    Console.WriteLine($"id: ${idUser}");
     try
     {
       var profile = await _userRepository.GetProfile(idUser);

@@ -10,8 +10,8 @@ namespace Funko_shop.Controllers;
 public class PurchaseController : Controller
 {
   private readonly PurchaseRepository _purchaseRepository;
-  private readonly CartRepository _cartRepository;
-  public PurchaseController(PurchaseRepository purchaseRepository, CartRepository cartRepository)
+  private readonly ICartRepository _cartRepository;
+  public PurchaseController(PurchaseRepository purchaseRepository, ICartRepository cartRepository)
   {
     _purchaseRepository = purchaseRepository;
     _cartRepository = cartRepository;
