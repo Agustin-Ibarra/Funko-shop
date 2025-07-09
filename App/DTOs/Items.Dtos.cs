@@ -30,3 +30,8 @@ public class ItemIdDto
 {
   public int IdItem { get; set; }
 }
+
+public class ItemsListDto
+{
+  public required List<ItemDataDto> Items {get; set;}
+}

@@ -15,6 +15,7 @@ public interface IItemRepository
   Task<List<ItemDto>> GetItemsByFilterOrderDesc(string filter, int offset);
   Task<ItemDetailDto> GetItemDetail(int id);
   Task<Item> GetItemModel(int id);
+  Task UpdateStock(int id, int quantity);
 }
 public class ItemRepository : IItemRepository
 {
@@ -164,6 +165,20 @@ public class ItemRepository : IItemRepository
     .Where(item => item.id_item == id)
     .FirstOrDefaultAsync() ?? throw new Exception($"No existe articulo con el id: {id}");
     return item;
+  }
+
+  public async Task UpdateStock(int id, int quantity)
+  {
+    var item = await _context.Items.FindAsync(id);
+    if (item != null)
+    {
+      item.stock -= quantity;
+      await _context.SaveChangesAsync();
+    }
+    else
+    {
+      throw new Exception("error");
+    }
   }
 
 }

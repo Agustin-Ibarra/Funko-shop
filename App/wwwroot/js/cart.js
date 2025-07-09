@@ -113,6 +113,15 @@ $body.addEventListener("click",(e)=>{
         itemsList.push(itemData);
       }
     });
+    fetch("/item",{
+      method : "PATCH",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({items:itemsList})
+    })
+    .catch((error)=>{
+      console.log(error);
+    });
+
     fetch("/purchase",{
       method:"POST",
       headers:{"Content-Type":"application/json"},

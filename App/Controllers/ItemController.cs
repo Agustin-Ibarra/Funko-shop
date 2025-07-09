@@ -1,4 +1,6 @@
+using Funko_shop.DTOs;
 using Funko_shop.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
 
@@ -33,5 +35,25 @@ public class ItemController : Controller
     {
       return Ok(item);
     }
+  }
+
+  [HttpPatch]
+  [Authorize]
+  [Route("/item")]
+
+  public async Task<IActionResult> UpdateItemStock([FromBody] ItemsListDto itemsList)
+  {
+    foreach (var item in itemsList.Items)
+    {
+      try
+      {
+        await _itemRepository.UpdateStock(item.IdItem, item.Quantity);
+      }
+      catch (Exception)
+      {
+        return BadRequest(new { error = $"No se puedo actualizar el articulo {item.IdItem}" });
+      }
+    }
+    return NoContent();
   }
 }
