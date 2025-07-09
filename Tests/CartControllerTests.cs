@@ -29,7 +29,7 @@ public class CartControllerTest
     var cartRepositoryMock = new Mock<ICartRepository>();
 
     cartRepositoryMock
-    .Setup(repository => repository.GetItemsToCart(1))
+    .Setup(item => item.GetItemsToCart(1))
     .ReturnsAsync([itemCart]);
 
     var controller = new CartController(cartRepositoryMock.Object, itemRepositoryMock.Object, userRepositoryMock.Object);
@@ -53,7 +53,7 @@ public class CartControllerTest
     var cartRepositoryMock = new Mock<ICartRepository>();
 
     cartRepositoryMock
-    .Setup(repository => repository.GetItemsToCart(1)).ReturnsAsync([]);
+    .Setup(item => item.GetItemsToCart(1)).ReturnsAsync([]);
 
     var controller = new CartController(cartRepositoryMock.Object, itemRepositoryMock.Object, userRepositoryMock.Object);
     controller.ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext { User = user } };
