@@ -4,12 +4,13 @@ Este proyecto fue desarrollado con el objetivo de aprender y reforzar conocimien
 Funko Shop es una aplicación web que permite a los usuarios explorar un catálogo de productos, buscar artículos por nombre o categoría, y ordenarlos por precio. La plataforma incluye un carrito de compras donde se pueden agregar, modificar o eliminar productos, ajustando la lista según la cantidad, las preferencias del usuario y el costo final. Además, los usuarios pueden iniciar sesión para realizar compras, agregar articulos a su carrito, acceder a su cuenta, revisar su información personal y consultar su historial de compras.
 ## Tabla de contenido
 1. [Características](#características)
-3. [BackEnd](#backEnd)
+3. [BackEnd](#backend)
 4. [Base de datos](#base-de-datos)
 5. [Documentacion](#documentacion)
 6. [Pruebas unitarias](#pruebas-unitarias)
 7. [Monitoreo de rutas](#monitoreo-de-rutas)
-2. [FrontEnd](#frontend)
+8. [FrontEnd](#frontend)
+9. [Visuales del sistema](#visuales-del-sistema)
 ## Características
 - Gestión de usuarios implementación de tokens de y autenticación mediante cookies
 <!-- - Integración con API de terceros, utiliza los servicios de stripe para realizar pagos online -->
@@ -63,6 +64,20 @@ App/
 |   ├── css/   # archivos de estilos
 |   └── js/    # archivos javascripts
 ```
+
+## Visuales del sistema
+### Articulos
+<img src="App/wwwroot/images/app-images/shop.png" alt="shop UI" width="600"/>
+
+### Informacion del articulo
+<img src="App/wwwroot/images/app-images/item.png" alt="Item UI" width="600"/>
+
+### Carrito de compras
+<img src="App/wwwroot/images/app-images/cart.png" alt="Cart UI" width="600"/>
+
+### Perfil del usuario
+<img src="App/wwwroot/images/app-images/account.png" alt="Account UI" width="600"/>
+
 ## Inicio
 - Inicio de la aplicación: una vez clonado el repositorio se debe escribir el siguiente comando en la terminal
 ```bash
