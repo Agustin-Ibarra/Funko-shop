@@ -352,7 +352,6 @@ button .material-symbols-outlined {
 /* ITEM ---> */
 
 .item-choice {
-  border: #307ac0 thin solid;
   display: flex;
   align-items: center;
   justify-content: center;
