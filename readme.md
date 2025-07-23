@@ -11,6 +11,7 @@ Funko Shop es una aplicación web que permite a los usuarios explorar un catálo
 7. [Monitoreo de rutas](#monitoreo-de-rutas)
 8. [FrontEnd](#frontend)
 9. [Visuales del sistema](#visuales-del-sistema)
+10. [Inicio](#inicio)
 ## Características
 - Gestión de usuarios implementación de tokens de y autenticación mediante cookies
 <!-- - Integración con API de terceros, utiliza los servicios de stripe para realizar pagos online -->
@@ -34,6 +35,7 @@ App/
 ```
 ## Base de datos
 La percistencia de informacion se realiza a traves de una base de datos relacional, la misma esta diseñada y graficada con la herramienta [dbdiagram.io](https://dbdiagram.io/), el BackEnd utiliza Entity Framework para la interacción con la base de datos, a través de un ORM
+<img src="App/wwwroot/images/app-images/db-diagram.png" alt="Diagrama de Base de datos" width="600"/>
 - Base de datos relacional
 - Modelos y consultas utilizando un ORM de Entity Framework, implementa paginación y DTOs para optimizar las consultas y no exponer las entidades
 - Gestor de base de datos: MySql
