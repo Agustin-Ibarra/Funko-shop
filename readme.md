@@ -55,7 +55,7 @@ Tests/
 ```bash
 dotnet test
 ```
-## Monitoreo de rutas
+## Monitoreo de la aplicación
 - Monitoreo: se realiza mediante un middleware y la implementacion de la clase que contiene la lógica para crear logs personalizados
 ## FrontEnd
 - Tecnologías utilizadas: Razor Pages CSS3 JavaScript
