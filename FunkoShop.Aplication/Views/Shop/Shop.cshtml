@@ -9,9 +9,17 @@
 }
 
 <section class="shop">
+  <div class="options-div-icon">
+    <span class="material-symbols-outlined options-icon">
+      arrow_forward
+    </span>
+  </div>
   <section class="options">
     <div>
-      <p class="option-title">Buscar</p>
+      <div class="title-options-div">
+        <p class="option-title">Buscar</p>
+        <div class="back-div"><span class="material-symbols-outlined icon-back">arrow_back</span></div>
+      </div>
       <input type="text" placeholder="Nombre del articulo o categoria">
     </div>
     <div>
@@ -19,7 +27,7 @@
         Ordenar por
         <span class="material-symbols-outlined">
           arrow_drop_down
-        </span>  
+        </span>
       </button>
       <ul class="list-options hidden">
         <li class="order-item" id="desc">Menor a mayor</li>
@@ -32,7 +40,7 @@
       <span class="material-symbols-outlined">
         search
       </span>
-      </button>
+    </button>
     <button class="clean">
       Limpiar filtros
       <span class="material-symbols-outlined">
@@ -44,8 +52,8 @@
   <section class="items">
     <article class="items-article">
       <div class="spinner-container">
-          <div class="big-spinner"></div>
-          <p class="not-found"></p>
+        <div class="big-spinner"></div>
+        <p class="not-found"></p>
       </div>
       <ul class="items-list">
       </ul>
