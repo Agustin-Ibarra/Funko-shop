@@ -36,6 +36,10 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: #30343F thin solid; */
 }
 
 header {
@@ -668,12 +672,11 @@ div {
 /* LOGIN ---> */
 
 form {
-  max-width: 600px;
-  margin: 4rem auto;
+  margin: 4rem 0;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   align-items: center;
+  gap: 2rem;
 }
 
 h3 {
@@ -685,20 +688,21 @@ h3 {
   align-items: center;
   justify-content: space-between;
   font-size: 20px;
-  width: 65%;
+  gap: 10px;
+  width: 350px;
+}
+.input-div p{
+  text-align: start;
 }
 
-.login {
-  width: 55%;
-}
-
-.input-div input {
+input {
   font-size: 20px;
   border: none;
   outline: none;
-  padding: 5px 0;
-  border-bottom: #FF3333 3px solid;
-  width: 200px;
+  padding: 5px 8px;
+  background-color: #ececec;
+  /* border-bottom: #FF3333 3px solid; */
+  width: 220px;
 }
 
 .send-form {
@@ -1082,6 +1086,9 @@ footer p {
   header {
     padding: 2rem;
   }
+  footer > div{
+    padding: 2rem;
+  }
 }
 
 @media (max-width:660px) {
@@ -1105,6 +1112,9 @@ footer p {
   .items-list {
     grid-template-columns: repeat(3, 120px);
   }
+  h3{
+    font-size: 30px;
+  }
 }
 
 @media (max-width:550px) {
@@ -1114,6 +1124,31 @@ footer p {
 
   .items-list {
     grid-template-columns: repeat(2, 120px);
+  }
+}
+
+@media (max-width:450px) {
+  h3{
+    font-size: 20px;
+  }
+  .input-div{
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+  }
+  input{
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+  }
+  .pb-3{
+    margin: 0 1rem;
+  }
+  footer > div{
+    padding: 2rem 1rem;
+  }
+  footer div > img{
+    padding-right: 1rem;
   }
 }
 
