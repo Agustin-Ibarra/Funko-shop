@@ -2,6 +2,7 @@ using FunkoShop.Aplication.Repository;
 using Microsoft.AspNetCore.Mvc;
 using FunkoShop.Aplication.Models;
 using Microsoft.EntityFrameworkCore;
+using FunkoShop.Aplication.DTOs;
 
 namespace FunkoShop.Aplication.Controllers;
 
