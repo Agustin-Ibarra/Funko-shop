@@ -2,7 +2,7 @@
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunkoShop.Aplication", "FunkoShop.Aplication\FunkoShop.Aplication.csproj", "{6CB3D4A0-84C0-A617-8622-471B59BFAC3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunkoShop.Application", "FunkoShop.Application\FunkoShop.Application.csproj", "{6CB3D4A0-84C0-A617-8622-471B59BFAC3A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunkoShop.Tests", "FunkoShop.Tests\FunkoShop.Tests.csproj", "{6B819389-83E2-4AD0-BF36-7D75A3FAF47F}"
 EndProject
