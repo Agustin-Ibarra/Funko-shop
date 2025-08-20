@@ -24,7 +24,7 @@ public class LoginController : Controller
 
   [Route("/login")]
   [HttpPost]
-  public async Task<IActionResult> ApiLogin([FromBody] LoginDto model)
+  public async Task<IActionResult> ApiLogin([FromBody] LoginDto dto)
   {
     if (!ModelState.IsValid)
     {
@@ -33,10 +33,10 @@ public class LoginController : Controller
     }
     else
     {
-      var userData = await _userRepository.GetUser(model.Email);
+      var userData = await _userRepository.GetUser(dto.Email);
       if (userData != null)
       {
-        if (BCrypt.Net.BCrypt.Verify(model.Password, userData.Password) == true)
+        if (BCrypt.Net.BCrypt.Verify(dto.Password, userData.Password) == true)
         {
           var claims = new[]
           {

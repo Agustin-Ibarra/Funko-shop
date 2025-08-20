@@ -23,7 +23,7 @@ public class RegisterController : Controller
 
   [HttpPost]
   [Route("/register")]
-  public async Task<IActionResult> Register([FromBody] RegisterDto dto)
+  public async Task<IActionResult> ApiRegister([FromBody] RegisterDto dto)
   {
     if (!ModelState.IsValid)
     {
