@@ -14,6 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddOutputCache();
 builder.Services.AddSwaggerGen();
 builder.Services.AddLogging();
+builder.Logging.AddFilter("Microsoft.EntityFrameworkCore", LogLevel.None);
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 .AddCookie(options =>
 {
@@ -61,7 +62,7 @@ if (!app.Environment.IsDevelopment())
   app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();

@@ -21,13 +21,36 @@ public class RequestLoggin
       stopWatch.Stop();
       var request = context.Request;
       var response = context.Response;
-      _logger.LogInformation("{Method} {Path} code {StatusCode} in {ElapsedMilliseconds}ms ip addres{IP}",
+      if (response.StatusCode < 400)
+      {
+        _logger.LogInformation("Method: {Method} Path: {Path} code:{StatusCode} in {ElapsedMilliseconds}ms ip addres{IP}",
         request.Method,
         request.Path,
         response.StatusCode,
         stopWatch.ElapsedMilliseconds,
         context.Connection.RemoteIpAddress
       );
+      }
+      else if (response.StatusCode >= 400 && response.StatusCode < 500)
+      {
+        _logger.LogWarning("Method: {Method} Path: {Path} code:{StatusCode} in {ElapsedMilliseconds}ms ip addres{IP}",
+        request.Method,
+        request.Path,
+        response.StatusCode,
+        stopWatch.ElapsedMilliseconds,
+        context.Connection.RemoteIpAddress
+      );
+      }
+      else
+      {
+        _logger.LogError("Method: {Method} Path: {Path} code:{StatusCode} in {ElapsedMilliseconds}ms ip addres{IP}",
+        request.Method,
+        request.Path,
+        response.StatusCode,
+        stopWatch.ElapsedMilliseconds,
+        context.Connection.RemoteIpAddress
+        );
+      }
     }
   }
 }
