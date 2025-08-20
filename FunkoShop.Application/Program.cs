@@ -6,14 +6,16 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 Env.Load();
+
 var builder = WebApplication.CreateBuilder(args);
 var connection = Environment.GetEnvironmentVariable("DB_CONNECTION");
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddOutputCache();
 builder.Services.AddSwaggerGen();
-builder.Services.AddLogging();
+builder.Logging.AddFilter("Microsoft.EntityFrameworkCore", LogLevel.None);
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 .AddCookie(options =>
 {
