@@ -23,9 +23,9 @@ $body.addEventListener("click",(e)=>{
           headers:{"Content-Type":"application/json"},
           body:JSON.stringify({
             name:$name.value,
-            last_name:$lastName.value,
+            lastName:$lastName.value,
             email:$email.value,
-            user_password:$password.value
+            password:$password.value
           })
         })
         .then(async(response)=>{

@@ -22,7 +22,7 @@ public class RegisterController : Controller
 
   [HttpPost]
   [Route("/register")]
-  public async Task<IActionResult> Register([FromBody] User model)
+  public async Task<IActionResult> Register([FromBody] RegisterDto dto)
   {
     if (!ModelState.IsValid)
     {
@@ -31,13 +31,19 @@ public class RegisterController : Controller
     }
     else
     {
-      var role = await _userRepository.GetRole();
-      model.user_password = BCrypt.Net.BCrypt.HashPassword(model.user_password);
-      model.create_time = DateTime.Now;
-      model.user_role = role.id_role;
+      dto.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+      var NewUser = new User
+      {
+        name = dto.Name,
+        last_name = dto.LastName,
+        email = dto.Email,
+        user_password = dto.Password,
+        user_role = 1,
+        create_time = DateTime.Now
+      };
       try
       {
-        await _userRepository.CreateUser(model);
+        await _userRepository.CreateUser(NewUser);
       }
       catch (DbUpdateException)
       {
