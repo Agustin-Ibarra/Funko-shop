@@ -35,7 +35,7 @@ App/
 ## Base de datos
 La percistencia de informacion se realiza a traves de una base de datos relacional, la misma esta diseñada y graficada con la herramienta [dbdiagram.io](https://dbdiagram.io/), el BackEnd utiliza Entity Framework para la interacción con la base de datos, a través de un ORM
 - Diagrama de Base de datos creado con dbdiagram.io
-<img src="App/wwwroot/images/app-images/db-diagram.png" alt="Diagrama de Base de datos" width="600"/>
+<img src="FunkoShop.Application/wwwroot/images/app-images/db-diagram.png" alt="Diagrama de Base de datos" width="600"/>
 
 - Base de datos relacional
 - Modelos y consultas utilizando un ORM de Entity Framework, implementa paginación y DTOs para optimizar las consultas y no exponer las entidades
@@ -70,16 +70,16 @@ App/
 
 ## Visuales del sistema
 ### Articulos
-<img src="App/wwwroot/images/app-images/shop.png" alt="shop UI" width="600"/>
+<img src="FunkoShop.Application/wwwroot/images/app-images/shop.png" alt="shop UI" width="600"/>
 
 ### Informacion del articulo
-<img src="App/wwwroot/images/app-images/item.png" alt="Item UI" width="600"/>
+<img src="FunkoShop.Application/wwwroot/images/app-images/item.png" alt="Item UI" width="600"/>
 
 ### Carrito de compras
-<img src="App/wwwroot/images/app-images/cart.png" alt="Cart UI" width="600"/>
+<img src="FunkoShop.Application/wwwroot/images/app-images/cart.png" alt="Cart UI" width="600"/>
 
 ### Perfil del usuario
-<img src="App/wwwroot/images/app-images/account.png" alt="Account UI" width="600"/>
+<img src="FunkoShop.Application/wwwroot/images/app-images/account.png" alt="Account UI" width="600"/>
 
 ## Inicio
 - Inicio de la aplicación: una vez clonado el repositorio se debe escribir el siguiente comando en la terminal
