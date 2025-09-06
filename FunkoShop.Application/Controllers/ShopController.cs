@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using FunkoShop.Aplication.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -24,8 +25,17 @@ public class ShopController : Controller
   [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "offset" })]
   public async Task<IActionResult> ApiItems(int offset)
   {
-    var items = await _itemRepository.GetItems(offset);
+    long before = GC.GetTotalMemory(true); // true fuerza recolección de basura
+
+    var items = await _itemRepository.GetItems(offset); // ejecutar consulta
+
+    long after = GC.GetTotalMemory(true);
+    Console.WriteLine($"Antes: {before / 1024.0 / 1024.0} MB");
+    Console.WriteLine($"Después: {after / 1024.0 / 1024.0} MB");
+    Console.WriteLine($"Diferencia: {(after - before) / 1024.0 / 1024.0} MB");
+
     return Ok(items);
+
   }
 
   [HttpGet]
