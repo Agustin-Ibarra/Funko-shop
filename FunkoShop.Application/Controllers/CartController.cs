@@ -3,9 +3,11 @@ using FunkoShop.Aplication.Models;
 using FunkoShop.Aplication.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace FunkoShop.Aplication.Controllers;
 
+[EnableRateLimiting("fixedWindows")]
 public class CartController : Controller
 {
   private readonly ICartRepository _cartRepository;
@@ -62,7 +64,7 @@ public class CartController : Controller
     cartItem.ItemFk = itemModel;
     cartItem.CustomerFk = userModel;
     await _cartRepository.CreateItemCart(cartItem);
-    return Created("/cart/items",new {message = "Articulo agregado al carrito"});
+    return Created("/cart/items", new { message = "Articulo agregado al carrito" });
   }
 
   [HttpDelete]
