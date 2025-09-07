@@ -4,9 +4,11 @@ using FunkoShop.Aplication.Models;
 using FunkoShop.Aplication.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace FunkoShop.Aplication.Controllers;
 
+[EnableRateLimiting("fixedWindows")]
 public class PurchaseController : Controller
 {
   private readonly PurchaseRepository _purchaseRepository;

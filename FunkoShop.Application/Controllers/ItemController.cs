@@ -3,9 +3,11 @@ using FunkoShop.Aplication.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace FunkoShop.Aplication.Controllers;
 
+[EnableRateLimiting("fixedWindows")]
 public class ItemController : Controller
 {
   private readonly IItemRepository _itemRepository;

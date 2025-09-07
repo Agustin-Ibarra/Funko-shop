@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using FunkoShop.Aplication.Models;
 using Microsoft.EntityFrameworkCore;
 using FunkoShop.Aplication.DTOs;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace FunkoShop.Aplication.Controllers;
 
+[EnableRateLimiting("fixedWindows")]
 public class RegisterController : Controller
 {
   private readonly IUserRepository _userRepository;

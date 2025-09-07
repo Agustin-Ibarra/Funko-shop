@@ -4,9 +4,11 @@ using FunkoShop.Aplication.DTOs;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace FunkoShop.Aplication.Controllers;
 
+[EnableRateLimiting("fixedWindows")]
 public class LoginController : Controller
 {
   private readonly IUserRepository _userRepository;

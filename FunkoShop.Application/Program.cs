@@ -1,3 +1,4 @@
+using System.Threading.RateLimiting;
 using DotNetEnv;
 using FunkoShop.Aplication.Data;
 using FunkoShop.Aplication.Logs;
@@ -53,6 +54,20 @@ else
 {
   Console.WriteLine("string connection is null");
 }
+builder.Services.AddRateLimiter(options => // middlewarer limitar numero de peticiones
+{
+  options.AddPolicy("fixedWindows", context => RateLimitPartition.GetFixedWindowLimiter(
+    partitionKey: context.Connection.RemoteIpAddress?.ToString() ?? "unkown IP addres", // utilizar la ip como identificador
+    factory: key => new FixedWindowRateLimiterOptions
+    {
+      PermitLimit = 15, // limite de 15 solicitudes por minuto
+      Window = TimeSpan.FromSeconds(60),
+      QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+      QueueLimit = 0
+    }
+  ));
+  options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -69,6 +84,7 @@ app.UseRouting();
 app.UseAuthorization();
 app.UseOutputCache();
 app.UseMiddleware<RequestLoggin>();
+app.UseRateLimiter();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseExceptionHandler(error =>
