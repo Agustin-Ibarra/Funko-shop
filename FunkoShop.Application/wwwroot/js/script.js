@@ -21,4 +21,10 @@ body.addEventListener("click",(e)=>{
   else if(e.target.matches(".icon-back") || e.target.matches(".search")){
     options.classList.remove("show");
   }
+  else if(e.target.matches("#cart-link")){
+    sessionStorage.setItem("redirect","/cart");
+  }
+  else if(e.target.matches("#account-link")){
+    sessionStorage.setItem("redirect","/account");
+  }
 });
