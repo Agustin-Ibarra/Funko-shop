@@ -60,7 +60,7 @@ builder.Services.AddRateLimiter(options => // middlewarer limitar numero de peti
     partitionKey: context.Connection.RemoteIpAddress?.ToString() ?? "unkown IP addres", // utilizar la ip como identificador
     factory: key => new FixedWindowRateLimiterOptions
     {
-      PermitLimit = 15, // limite de 15 solicitudes por minuto
+      PermitLimit = 60, // limite de 60 solicitudes por minuto
       Window = TimeSpan.FromSeconds(60),
       QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
       QueueLimit = 0

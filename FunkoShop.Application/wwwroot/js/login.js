@@ -22,7 +22,7 @@ $body.addEventListener("click",(e)=>{
           $errorText.textContent = error.error;
         }
         else if(response.status === 200){
-          window.location.href = "/";
+          window.location.href = sessionStorage.getItem("redirect");
         }
       })
       .catch((error)=>{
