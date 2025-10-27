@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace FunkoShop.Aplication.DTOs;
 
 public class ItemDto
@@ -20,18 +22,21 @@ public class ItemDetailDto
   public int Stock { get; set; }
 }
 
-public class itemCartDto
+public class ItemCartDto
 {
+  [Range(1,100,ErrorMessage = "El id del articulo esta no existe o esta fuera del rango")]
   public int IdItem { get; set; }
-  public int quantity { get; set; }
+
+  [Range(1,5,ErrorMessage = "El rango de cantidad es de minimo 1 y maximo 5")]
+  public int Quantity { get; set; }
 }
 
-public class ItemIdDto
+public class ItemPriceDto
 {
-  public int IdItem { get; set; }
+  public double ItemUnitPrice { get; set; }
 }
 
 public class ItemsListDto
 {
-  public required List<ItemDataDto> Items {get; set;}
+  public required List<ItemCartDto> Items {get; set;}
 }

@@ -16,6 +16,7 @@ public interface IItemRepository
   Task<ItemDetailDto> GetItemDetail(int id);
   Task<Item> GetItemModel(int id);
   Task UpdateStock(int id, int quantity);
+  Task<ItemPriceDto?> GetItemPrice(int idItem);
 }
 public class ItemRepository : IItemRepository
 {
@@ -179,6 +180,18 @@ public class ItemRepository : IItemRepository
     {
       throw new Exception("error");
     }
+  }
+
+  public async Task<ItemPriceDto?> GetItemPrice(int idItem)
+  {
+    return await _context.Items
+    .OrderBy(item => item.id_item)
+    .Where(item => item.id_item == idItem)
+    .Select(item => new ItemPriceDto
+    {
+      ItemUnitPrice = item.unit_price
+    })
+    .FirstOrDefaultAsync();
   }
 
 }

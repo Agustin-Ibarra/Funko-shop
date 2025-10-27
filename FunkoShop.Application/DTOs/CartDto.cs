@@ -11,15 +11,3 @@ public class CartItemDto
   public int Quantity { get; set; }
   public double TotalCart { get; set; }
 }
-
-public class ItemDataDto
-{
-  public int IdItem { get; set; }
-  public int Quantity { get; set; }
-  public double unitPrice { get; set; }
-}
-public class PayDataDto
-{
-  public double Total { get; set; }
-  public List<ItemDataDto>? Items { get; set; }
-}

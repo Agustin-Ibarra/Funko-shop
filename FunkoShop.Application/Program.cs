@@ -29,7 +29,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
   {
     OnRedirectToLogin = context =>
     {
-      if (context.Request.Path.StartsWithSegments("/cart/items") || context.Request.Path.StartsWithSegments("/purchase") && context.Response.StatusCode == 200)
+      if (context.Request.Path.StartsWithSegments("/cart/items") || context.Request.Path.StartsWithSegments("/api/purchase") && context.Response.StatusCode == 200)
       {
         context.Response.StatusCode = 401;
         return Task.CompletedTask;

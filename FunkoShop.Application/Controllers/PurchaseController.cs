@@ -13,10 +13,12 @@ public class PurchaseController : Controller
 {
   private readonly PurchaseRepository _purchaseRepository;
   private readonly ICartRepository _cartRepository;
-  public PurchaseController(PurchaseRepository purchaseRepository, ICartRepository cartRepository)
+  private readonly IItemRepository _itemRepository;
+  public PurchaseController(PurchaseRepository purchaseRepository, ICartRepository cartRepository, IItemRepository itemRepository)
   {
     _purchaseRepository = purchaseRepository;
     _cartRepository = cartRepository;
+    _itemRepository = itemRepository;
   }
 
   [HttpGet]
@@ -64,30 +66,55 @@ public class PurchaseController : Controller
 
   [HttpPost]
   [Authorize]
-  [Route("/purchase")]
-  public async Task<IActionResult> CreatePurchase([FromBody] PayDataDto payData)
+  [Route("/api/purchase")]
+  public async Task<IActionResult> CreatePurchase([FromBody] ItemsListDto itemsListDto)
   {
-    int idUser = Convert.ToInt16(User.FindFirstValue(ClaimTypes.NameIdentifier));
-    var purchaseOrder = new PurchaseOrder(DateTime.Now, "FunkoShop", idUser, payData.Total);
-    int IdPurchase = await _purchaseRepository.CreatePurchaseOrder(purchaseOrder);
-    if (payData.Items != null)
+    if (!ModelState.IsValid)
     {
-      foreach (var item in payData.Items)
-      {
-        var purchaseDetail = new PurchaseDetail
-        {
-          id_purchase_order = IdPurchase,
-          item = item.IdItem,
-          item_price = item.IdItem,
-          quantity = item.Quantity,
-          subtotal = item.Quantity * item.unitPrice,
-          PurchaseOrderFk = purchaseOrder
-        };
-        await _purchaseRepository.CreatePurchaseDetails(purchaseDetail);
-      }
+      var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+      return BadRequest(new { StatusCode = 400, error = errors });
     }
-    await _cartRepository.ClearCart(idUser);
-    return Created($"/purchase/{IdPurchase}", new { id = IdPurchase });
+    else
+    {
+      double total = 0;
+      double subtotal = 0;
+      foreach (var item in itemsListDto.Items)
+      {
+        var itemPrice = await _itemRepository.GetItemPrice(item.IdItem); // se obtiene el precio del articulo por cada iteracion
+        if (itemPrice != null)
+        {
+          total += itemPrice.ItemUnitPrice * item.Quantity; // los recargos o descuentos se aplicarian aqui
+          subtotal += itemPrice.ItemUnitPrice * item.Quantity;
+        }
+        else
+        {
+          return BadRequest(new { error = $"No se encontro el articulo con id: {item.IdItem}" });
+        }
+      }
+      var purchaseOrder = new PurchaseOrder
+      {
+        customer = Convert.ToInt16(User.FindFirstValue(ClaimTypes.NameIdentifier)),
+        date_purchase = DateTime.Now,
+        seller = "Funko shop",
+        total = total
+      };
+      await _purchaseRepository.CreatePurchaseOrder(purchaseOrder);
+      foreach (var item in itemsListDto.Items)
+      {
+        // se crea un registro del detalle de la orden de compra por cada articulo 
+        // con el id de la orden de compra creada antes del bucle for
+        var itemUnitPrice = await _itemRepository.GetItemPrice(item.IdItem);
+        var purchaseDatail = new PurchaseDetail
+        {
+          id_purchase_order = purchaseOrder.id_purchase,
+          item = item.IdItem,
+          item_price = itemUnitPrice != null ? itemUnitPrice.ItemUnitPrice : 0,
+          quantity = item.Quantity,
+          subtotal = subtotal
+        };
+        await _purchaseRepository.CreatePurchaseDetails(purchaseDatail);
+      }
+      return Ok(new {purchaseId = purchaseOrder.id_purchase});
+    }
   }
-
 }
