@@ -22,7 +22,7 @@ public class ShopController : Controller
   }
 
   [HttpGet]
-  [Route("/shop/items/{offset}")]
+  [Route("/api/shop/items/{offset}")]
   [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "offset" })]
   public async Task<IActionResult> ApiItems(int offset)
   {
@@ -31,7 +31,7 @@ public class ShopController : Controller
   }
 
   [HttpGet]
-  [Route("/shop/items/{order}/{offset}")]
+  [Route("/api/shop/items/{order}/{offset}")]
   [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "order", "offset" })]
   public async Task<IActionResult> ApiItemsOrderByprice(string order, int offset)
   {
@@ -48,7 +48,7 @@ public class ShopController : Controller
   }
 
   [HttpGet]
-  [Route("/shop/items/filter/{filter}/{offset}")]
+  [Route("/api/shop/items/filter/{filter}/{offset}")]
   [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "filter", "offset" })]
   public async Task<IActionResult> ApiItemsByFilter(string filter, int offset)
   {
@@ -64,7 +64,7 @@ public class ShopController : Controller
   }
 
   [HttpGet]
-  [Route("/shop/items/filter/{filter}/{order}/{offset}")]
+  [Route("/api/shop/items/filter/{filter}/{order}/{offset}")]
   [OutputCache(Duration = 300, VaryByRouteValueNames = new[] { "filter", "order", "offset" })]
   public async Task<IActionResult> ApiItemsByFilterAndOrder(string filter, string order, int offset)
   {

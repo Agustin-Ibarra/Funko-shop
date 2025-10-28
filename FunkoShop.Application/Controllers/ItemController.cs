@@ -24,7 +24,7 @@ public class ItemController : Controller
   }
 
   [HttpGet]
-  [Route("/item/details/{id}")]
+  [Route("/api/item/details/{id}")]
   [OutputCache(Duration = 600, VaryByRouteValueNames = new[] { "id" })]
   public async Task<IActionResult> GetItemDetail(int id)
   {
@@ -42,7 +42,6 @@ public class ItemController : Controller
   [HttpPatch]
   [Authorize]
   [Route("/item")]
-
   public async Task<IActionResult> UpdateItemStock([FromBody] ItemsListDto itemsList)
   {
     foreach (var item in itemsList.Items)

@@ -7,7 +7,7 @@ const $cartLoader = document.querySelector(".cart-item-loader");
 const $cartEmpty = document.querySelector(".cart-item-empty");
 const $pay = document.querySelector(".pay");
 
-fetch("/cart/items")
+fetch("/api/cart/items")
 .then(async(response)=>{
   if(response.status === 404){
     $cartEmpty.classList.remove("hidden");
@@ -76,7 +76,7 @@ $body.addEventListener("click",(e)=>{
     const $spinner = document.createElement("div");
     $spinner.setAttribute("class","spinner delete-spinner");
     e.target.parentNode.appendChild($spinner);
-    fetch(`/cart/items/${e.target.id}`,
+    fetch(`/api/cart/items/${e.target.id}`,
       {method:"DELETE"}
     )
     .then(async(response)=>{

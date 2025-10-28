@@ -31,7 +31,7 @@ public class CartController : Controller
 
   [Authorize]
   [HttpGet]
-  [Route("/cart/items")]
+  [Route("/api/cart/items")]
   public async Task<IActionResult> GetCartItems()
   {
     int idUser = Convert.ToInt16(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -55,7 +55,7 @@ public class CartController : Controller
 
   [Authorize]
   [HttpPost]
-  [Route("/cart/items")]
+  [Route("/api/cart/items")]
   public async Task<IActionResult> CreateItemCart([FromBody] Cart cartItem)
   {
     cartItem.customer = Convert.ToInt16(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -69,7 +69,7 @@ public class CartController : Controller
 
   [HttpDelete]
   [Authorize]
-  [Route("/cart/items/{idCart}")]
+  [Route("/api/cart/items/{idCart}")]
   public async Task<IActionResult> DeleteItemCart(int idCart)
   {
     try

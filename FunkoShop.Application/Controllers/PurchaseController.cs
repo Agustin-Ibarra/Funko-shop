@@ -31,7 +31,7 @@ public class PurchaseController : Controller
 
   [HttpGet]
   [Authorize]
-  [Route("/purchase")]
+  [Route("/api/purchase")]
   public async Task<IActionResult> GetPurchaseByUser()
   {
     int idUser = Convert.ToInt16(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -54,7 +54,7 @@ public class PurchaseController : Controller
 
   [HttpGet]
   [Authorize]
-  [Route("/purchase/{idPurchase}")]
+  [Route("/api/purchase/{idPurchase}")]
   public async Task<IActionResult> GetPurchase(int idPurchase)
   {
     var purchaseOrder = await _purchaseRepository.GetPurchase(idPurchase);

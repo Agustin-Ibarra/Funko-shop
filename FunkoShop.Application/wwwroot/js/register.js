@@ -18,7 +18,7 @@ $body.addEventListener("click",(e)=>{
       }
       else{
         $spinner.classList.remove("hidden");
-        fetch("/register",{
+        fetch("/api/register",{
           method:"POST",
           headers:{"Content-Type":"application/json"},
           body:JSON.stringify({

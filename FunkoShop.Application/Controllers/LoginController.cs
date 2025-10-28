@@ -24,7 +24,7 @@ public class LoginController : Controller
     return View();
   }
 
-  [Route("/login")]
+  [Route("/api/login")]
   [HttpPost]
   public async Task<IActionResult> ApiLogin([FromBody] LoginDto dto)
   {

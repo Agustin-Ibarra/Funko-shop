@@ -2,7 +2,7 @@ const $body = document.querySelector("body");
 const $delete = document.querySelector(".delete-profile");
 const $purchaseList = document.querySelector(".purchase-list");
 
-fetch("/account/profile")
+fetch("/api/account/profile")
 .then(async(response)=>{
   const userData = await response.json();
   const $fullname = document.getElementById("fullname");
@@ -14,7 +14,7 @@ fetch("/account/profile")
   console.error(error);
 });
 
-fetch("/purchase")
+fetch("/api/purchase")
 .then(async(response)=>{
   if(response.status === 200){
     const purchases = await response.json();

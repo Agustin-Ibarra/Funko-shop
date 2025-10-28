@@ -1,4 +1,4 @@
-fetch(`/purchase/${sessionStorage.getItem("idPurchase")}`)
+fetch(`/api/purchase/${sessionStorage.getItem("idPurchase")}`)
   .then(async (response) => {
     const $purchaseDiv = document.querySelector(".purchase-div");
     const purchase = await response.json();

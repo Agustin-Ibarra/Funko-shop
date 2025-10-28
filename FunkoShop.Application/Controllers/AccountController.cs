@@ -28,7 +28,7 @@ public class AccountController : Controller
 
   [Authorize]
   [HttpGet]
-  [Route("/account/profile")]
+  [Route("/api/account/profile")]
   [OutputCache(Duration = 600)]
   public async Task<IActionResult> Profile()
   {

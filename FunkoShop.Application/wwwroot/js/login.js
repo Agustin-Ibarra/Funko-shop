@@ -10,7 +10,7 @@ $body.addEventListener("click",(e)=>{
     $errorText.classList.add("hidden");
     if($email.value && $password.value){
       $spinner.classList.remove("hidden");
-      fetch("/login",{
+      fetch("/api/login",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({email:$email.value,password:$password.value})
@@ -22,7 +22,12 @@ $body.addEventListener("click",(e)=>{
           $errorText.textContent = error.error;
         }
         else if(response.status === 200){
-          window.location.href = sessionStorage.getItem("redirect");
+          if(sessionStorage.getItem("redirect")){
+            window.location.href = sessionStorage.getItem("redirect");
+          }
+          else{
+            window.location.href = "/";
+          }
         }
       })
       .catch((error)=>{

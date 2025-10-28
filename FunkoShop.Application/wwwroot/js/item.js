@@ -10,7 +10,7 @@ const $cartIcon = document.querySelector(".material-symbols-outlined");
 let quantity = 1;
 let limit = 5;
 
-fetch(`/item/details/${sessionStorage.getItem("id")}`)
+fetch(`/api/item/details/${sessionStorage.getItem("id")}`)
 .then(async(response)=>{
   const item = await response.json();
   const $img = document.querySelector(".item-choice-img");
@@ -58,7 +58,7 @@ $body.addEventListener("click",(e)=>{
   else if(e.target.matches(".add-cart")){
     $miniSpinner.classList.remove("hidden");
     $cartIcon.textContent = "";
-    fetch("/cart/items",{
+    fetch("/api/cart/items",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({

@@ -45,7 +45,7 @@ const generateItem = function(items){
 }
 
 const itemsDefault = function(){
-  fetch(`/shop/items/${offset}`)
+  fetch(`/api/shop/items/${offset}`)
   .then(async(response)=>{
     const items = await response.json();
     offset += items.length;
@@ -64,7 +64,7 @@ const itemsDefault = function(){
 }
 
 const itemsByOrder = function(){
-  fetch(`/shop/items/${sessionStorage.getItem("order")}/${offset}`)
+  fetch(`/api/shop/items/${sessionStorage.getItem("order")}/${offset}`)
   .then(async(response)=>{
     const items = await response.json();
     offset += items.length;
@@ -86,7 +86,7 @@ const itemsByFilter = function(){
   const $notFoundText = document.querySelector(".not-found");
   $notFoundText.textContent = "";
   $spinner.classList.remove("hidden");
-  fetch(`/shop/items/filter/${sessionStorage.getItem("filter")}/${offset}`)
+  fetch(`/api/shop/items/filter/${sessionStorage.getItem("filter")}/${offset}`)
   .then(async(response)=>{
     if(response.status === 404){
       const error = await response.json();
@@ -115,7 +115,7 @@ const itemsByFilterAndOrder = function(e){
   const $notFoundText = document.querySelector(".not-found");
   $notFoundText.textContent = "";
   $spinner.classList.remove("hidden");
-  fetch(`/shop/items/filter/${sessionStorage.getItem("filter")}/${sessionStorage.getItem("order")}/${offset}`)
+  fetch(`/api/shop/items/filter/${sessionStorage.getItem("filter")}/${sessionStorage.getItem("order")}/${offset}`)
   .then(async(response)=>{
     if(response.status === 404){
       const error = await response.json();
