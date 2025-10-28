@@ -101,15 +101,15 @@ $body.addEventListener("click",(e)=>{
     const $payIcon = document.querySelector(".pay-icon");
     const $spinner = document.querySelector(".pay-spinner");
     const items = document.querySelectorAll(".cart-item");
+    const itemsList = [];
     $payIcon.textContent = "";
     $spinner.classList.remove("hidden");
-    const itemsList = [];
     items.forEach(item => {
       if(item.id && item.childNodes[2].textContent){
-        const unitPrice = item.childNodes[0].childNodes[1].childNodes[2].textContent.replace("$","");
-        const itemData = {idItem:0,quantity:0,unitPrice:unitPrice}
-        itemData.idItem = item.id;
-        itemData.quantity = item.childNodes[1].textContent;
+        const itemData = {
+          idItem : item.id,
+          quantity : item.childNodes[1].textContent
+        }
         itemsList.push(itemData);
       }
     });
@@ -122,15 +122,14 @@ $body.addEventListener("click",(e)=>{
       console.log(error);
     });
 
-    fetch("/purchase",{
+    fetch("/api/purchase",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({items:itemsList,total:$total.textContent.replace("$","")})
+      body:JSON.stringify({items:itemsList})
     })
     .then(async(response)=>{
       const idPurchase = await response.json();
-      console.log(idPurchase);
-      sessionStorage.setItem("idPurchase",idPurchase.id);
+      sessionStorage.setItem("idPurchase",idPurchase.idPurchase);
       window.location.href = "/purchases";
     })
     .catch((error)=>{

@@ -726,7 +726,6 @@ input {
 .purchase-section-main {
   padding: 4rem;
   display: flex;
-  border: #2a70b1 thin solid;
   flex-direction: column;
   gap: 3rem;
   align-items: center;
@@ -752,10 +751,13 @@ input {
   display: flex;
   flex-direction: column;
   align-items: start;
+  /* justify-content: center; */
   gap: 1rem;
 }
 
 .profile-section {
+  /* border: #2a70b1 thin solid; */
+  width: 600px;
   display: flex;
 }
 
@@ -776,7 +778,7 @@ h4 {
   align-items: center;
   gap: 8px;
   background-color: #f3f3f3;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 10px;
 }
 
@@ -878,8 +880,14 @@ h4 {
   text-overflow: ellipsis;
 }
 
-.total-purchase {
+.subtotal-purchase{
   font-size: 20px;
+  font-weight: 600;
+}
+
+.total-purchase {
+  font-size: 22px;
+  font-weight: 600;
   padding-top: 1rem;
   border-top: #929292 2px dashed;
   width: 100%;

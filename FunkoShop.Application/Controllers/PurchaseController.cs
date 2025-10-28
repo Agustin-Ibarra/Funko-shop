@@ -114,7 +114,7 @@ public class PurchaseController : Controller
         };
         await _purchaseRepository.CreatePurchaseDetails(purchaseDatail);
       }
-      return Ok(new {purchaseId = purchaseOrder.id_purchase});
+      return Created("/api/purchase",new {idPurchase = purchaseOrder.id_purchase});
     }
   }
 }

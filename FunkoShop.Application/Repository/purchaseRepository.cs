@@ -37,9 +37,9 @@ public class PurchaseRepository
     .Select(purchase => new PurchaseDetailDto
     {
       ItemName = purchase.itemNameFk != null ? purchase.itemNameFk.name : "Articulo sin nombre",
-      // ItemPrice = purchase.ItemPriceFk != null ? purchase.ItemPriceFk.unit_price : 0.00,
-      Quantity = purchase.quantity,
-      // Subtotal = purchase.ItemPriceFk != null ? purchase.ItemPriceFk.unit_price * purchase.quantity : 0.00,
+      ItemPrice = purchase != null ? purchase.item_price : 0.00,
+      Quantity = purchase != null ? purchase.quantity : 0,
+      Subtotal = purchase != null ? purchase.subtotal : 0.00
     })
     .Skip(0)
     .Take(15)
