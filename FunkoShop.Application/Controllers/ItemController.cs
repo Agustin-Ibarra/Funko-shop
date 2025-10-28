@@ -39,22 +39,52 @@ public class ItemController : Controller
     }
   }
 
-  [HttpPatch]
   [Authorize]
-  [Route("/item")]
+  [HttpPatch]
+  [Route("/api/item")]
   public async Task<IActionResult> UpdateItemStock([FromBody] ItemsListDto itemsList)
   {
-    foreach (var item in itemsList.Items)
+    if (!ModelState.IsValid)
     {
+      var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+      return BadRequest(new { StatusCode = 400, error = errors });
+    }
+    else
+    {
+      List<ItemCartDto> ItemsRejected = [];
+      List<ItemCartDto> ItemsUpdatetd = [];
       try
       {
-        await _itemRepository.UpdateStock(item.IdItem, item.Quantity);
+        foreach (var item in itemsList.Items)
+        {
+          var flag = await _itemRepository.UpdateStock(item.IdItem, item.Quantity);
+          if (flag == false)
+          {
+            ItemsRejected.Add(item);
+          }
+          else
+          {
+            ItemsUpdatetd.Add(item);
+          }
+        }
+        if (ItemsRejected.Count > 0)
+        {
+          foreach (var item in ItemsUpdatetd)
+          {
+            await _itemRepository.RestoreStock(item.IdItem, item.Quantity);
+          }
+          return BadRequest(new { error = "No se pudo reservar los articulos", rejectedList = ItemsRejected });
+        }
+        else
+        {
+          return Created();
+        }
       }
-      catch (Exception)
+      catch (Exception ex)
       {
-        return BadRequest(new { error = $"No se puedo actualizar el articulo {item.IdItem}" });
+        Console.WriteLine(ex.Message);
+        return StatusCode(503, new { error = "Ocurrio un error en la base de datos" });
       }
     }
-    return NoContent();
   }
 }

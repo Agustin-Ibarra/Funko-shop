@@ -15,7 +15,8 @@ public interface IItemRepository
   Task<List<ItemDto>> GetItemsByFilterOrderDesc(string filter, int offset);
   Task<ItemDetailDto> GetItemDetail(int id);
   Task<Item> GetItemModel(int id);
-  Task UpdateStock(int id, int quantity);
+  Task<bool> UpdateStock(int id, int quantity);
+  Task RestoreStock(int id, int quantity);
   Task<ItemPriceDto?> GetItemPrice(int idItem);
 }
 public class ItemRepository : IItemRepository
@@ -168,17 +169,37 @@ public class ItemRepository : IItemRepository
     return item;
   }
 
-  public async Task UpdateStock(int id, int quantity)
+  public async Task<bool> UpdateStock(int id, int quantity) // retorna true si la consulta pudo completarse y false en caso de error
   {
     var item = await _context.Items.FindAsync(id);
-    if (item != null)
+    if (item != null) // verificar que exista el articulo antes de continuar al siguiente proceso
     {
-      item.stock -= quantity;
-      await _context.SaveChangesAsync();
+      var result = await _context.Database.ExecuteSqlRawAsync(
+        "update items set stock = stock - {1} where id_item = {0} and stock >= {1}", id, quantity
+      );
+      if (result == 1)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
     }
     else
     {
-      throw new Exception("error");
+      return false;
+    }
+  }
+
+  public async Task RestoreStock(int id, int quantity)
+  {
+    var item = await _context.Items.FindAsync(id);
+    if(item != null)
+    {
+      await _context.Database.ExecuteSqlRawAsync(
+        "update items set stock = stock + {1} where id_item = {0}", id, quantity
+      );
     }
   }
 
@@ -187,10 +208,7 @@ public class ItemRepository : IItemRepository
     return await _context.Items
     .OrderBy(item => item.id_item)
     .Where(item => item.id_item == idItem)
-    .Select(item => new ItemPriceDto
-    {
-      ItemUnitPrice = item.unit_price
-    })
+    .Select(item => new ItemPriceDto { ItemUnitPrice = item.unit_price })
     .FirstOrDefaultAsync();
   }
 

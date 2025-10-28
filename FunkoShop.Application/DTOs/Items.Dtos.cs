@@ -24,10 +24,10 @@ public class ItemDetailDto
 
 public class ItemCartDto
 {
-  [Range(1,100,ErrorMessage = "El id del articulo esta no existe o esta fuera del rango")]
+  [Range(1, 100, ErrorMessage = "El id del articulo esta no existe o esta fuera del rango")]
   public int IdItem { get; set; }
 
-  [Range(1,5,ErrorMessage = "El rango de cantidad es de minimo 1 y maximo 5")]
+  [Range(1, 5, ErrorMessage = "El rango de cantidad es de minimo 1 y maximo 5")]
   public int Quantity { get; set; }
 }
 
@@ -38,5 +38,7 @@ public class ItemPriceDto
 
 public class ItemsListDto
 {
-  public required List<ItemCartDto> Items {get; set;}
+  [MinLength(1, ErrorMessage = "La lista debe tener almenos un articulo")]
+  [MaxLength(10, ErrorMessage = "La lista solo admite un maximo de 10 articulos")]
+  public required List<ItemCartDto> Items { get; set; }
 }
